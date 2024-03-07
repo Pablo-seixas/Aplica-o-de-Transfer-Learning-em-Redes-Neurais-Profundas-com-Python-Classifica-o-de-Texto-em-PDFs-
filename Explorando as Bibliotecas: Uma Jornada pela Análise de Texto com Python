@@ -1,0 +1,21 @@
+Explorando as Bibliotecas: Uma Jornada pela Análise de Texto com Python
+
+Neste projeto, mergulhamos no mundo da análise de texto utilizando algumas das bibliotecas mais populares em Python. Cada uma delas desempenhou um papel essencial na extração, processamento e classificação de texto em documentos PDF.
+
+1. Biblioteca os:
+
+A biblioteca os é uma ferramenta fundamental para interagir com o sistema operacional. Neste projeto, ela foi utilizada para verificar a existência de arquivos PDF e garantir a integridade do processo de leitura. Por exemplo, a função os.path.exists() foi usada para verificar se o arquivo PDF especificado existe antes de tentar extrair texto dele.
+
+2. Biblioteca PyPDF2:
+
+A biblioteca PyPDF2 é uma poderosa ferramenta para trabalhar com arquivos PDF em Python. Ela fornece métodos para extrair texto e metadados de documentos PDF. Neste projeto, a função extract_text_from_pdf() fez uso da PyPDF2 para iterar sobre as páginas de um arquivo PDF e extrair o texto de cada uma delas.
+
+3. Biblioteca scikit-learn (sklearn):
+
+A biblioteca scikit-learn, também conhecida como sklearn, é uma das bibliotecas mais populares para aprendizado de máquina em Python. Neste projeto, utilizamos as funcionalidades de pré-processamento de texto e classificação de texto fornecidas pelo scikit-learn. Por exemplo, a classe TfidfVectorizer foi utilizada para vetorizar o texto usando a abordagem TF-IDF (Term Frequency-Inverse Document Frequency), e a classe LinearSVC foi utilizada para treinar um modelo de classificação de texto utilizando SVM linear.
+
+4. Biblioteca matplotlib:
+
+A biblioteca matplotlib é uma ferramenta poderosa para visualização de dados em Python. Neste projeto, ela foi utilizada para criar um gráfico de barras que mostra a distribuição das classes nos dados de treinamento. Isso nos permitiu ter uma visão geral da distribuição dos dados e entender melhor o balanceamento entre as classes.
+
+Ao unir essas bibliotecas, fomos capazes de realizar análises detalhadas de documentos PDF e construir um modelo de classificação de texto eficaz, demonstrando o poder e a versatilidade das ferramentas disponíveis em Python para análise de texto.
