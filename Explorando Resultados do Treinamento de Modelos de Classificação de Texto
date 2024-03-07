@@ -1,0 +1,12 @@
+PS C:\Users\pablo_y7v> & C:/Users/pablo_y7v/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/pablo_y7v/Desktop/maragogipe/import os.py"
+ppress the warning.
+  warnings.warn(
+Acurácia do modelo: 0.0
+Exemplo 1:
+Texto: Pablo Santos Seixas  
+Data Analysis | Database | Power BI | Cybersecurity | Scrum | Corporate Financ...
+Classe verdadeira: positive
+Classe prevista: neutral
+==================================================
+Modelo treinado com sucesso!
+PS C:\Users\pablo_y7v> & C:/Users/pablo_y7v/AppData/Local/Programs/Python/Python312/python.exe "c:/Users/pablo_y7v/Desktop/maragogipe/import os.py"
