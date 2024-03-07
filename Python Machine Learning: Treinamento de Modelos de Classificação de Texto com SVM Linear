@@ -84,3 +84,5 @@ print(f"Misturado: {misturado_media * 100:.2f}%")
 print("="*50)
 
 print("Modelo treinado com sucesso!")
+
+git clone https://github.com/Pablo-seixas/Aplica-o-de-Transfer-Learning-em-Redes-Neurais-Profundas-com-Python-Classifica-o-de-Texto-em-PDFs-.git
