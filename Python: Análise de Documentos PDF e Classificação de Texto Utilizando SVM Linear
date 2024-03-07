@@ -1,0 +1,86 @@
+import os
+import PyPDF2
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.svm import LinearSVC
+from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+
+# Função para extrair texto de um arquivo PDF
+def extract_text_from_pdf(pdf_path):
+    text = ""
+    with open(pdf_path, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        for page_num in range(len(reader.pages)):
+            page = reader.pages[page_num]
+            text += page.extract_text()
+    return text
+
+# Caminho para o diretório com o arquivo PDF
+pdf_dir = 'C:\\Users\\pablo_y7v\\Desktop\\AREA\\Pablo Santos Seixas - 2024.3.4.pdf'
+
+# Verifica se o arquivo PDF existe
+if not os.path.exists(pdf_dir):
+    raise FileNotFoundError(f"O arquivo PDF '{pdf_dir}' não foi encontrado.")
+
+# Extrai texto do PDF
+resume_text = extract_text_from_pdf(pdf_dir)
+
+# Definindo mais classes
+labels = ["positive", "negative", "neutral", "mixed"]
+
+# Criando mais textos de exemplo (aqui, estamos usando o mesmo currículo)
+texts = [resume_text, resume_text, resume_text, resume_text]
+
+# Criando um conjunto de dados de treinamento
+X_train, X_test, y_train, y_test = train_test_split(texts, labels, test_size=0.2, random_state=42)
+
+# Visualização da distribuição das classes nos dados de treinamento
+plt.figure(figsize=(8, 6))
+plt.bar(labels, [sum([1 for label in y_train if label == l]) for l in labels])
+plt.title('Distribuição das Classes nos Dados de Treinamento')
+plt.xlabel('Classe')
+plt.ylabel('Quantidade de Exemplos')
+plt.show()
+
+# Vetorização de texto usando TF-IDF
+vectorizer = TfidfVectorizer(max_features=1000)
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+# Treinamento do modelo de classificação de texto (usando SVM linear)
+clf = LinearSVC()
+clf.fit(X_train_vec, y_train)
+
+# Avaliação do modelo
+y_pred = clf.predict(X_test_vec)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Acurácia do modelo: {accuracy}")
+
+# Exibindo os resultados
+for idx, (text, true_label, pred_label) in enumerate(zip(X_test, y_test, y_pred)):
+    print(f"Exemplo {idx+1}:")
+    print(f"Texto: {text[:100]}...")  # Exibindo apenas os primeiros 100 caracteres do texto
+    print(f"Classe verdadeira: {true_label}")
+    print(f"Classe prevista: {pred_label}")
+    print("="*50)
+
+# Calculando a média para cada classe
+positivo_count = sum(1 for label in y_test if label == "positive")
+neutro_count = sum(1 for label in y_test if label == "neutral")
+negativo_count = sum(1 for label in y_test if label == "negative")
+misturado_count = sum(1 for label in y_test if label == "mixed")
+
+positivo_media = positivo_count / len(y_test)
+neutro_media = neutro_count / len(y_test)
+negativo_media = negativo_count / len(y_test)
+misturado_media = misturado_count / len(y_test)
+
+print("Média de Exemplos por Classe:")
+print(f"Positivo: {positivo_media * 100:.2f}%")
+print(f"Neutro: {neutro_media * 100:.2f}%")
+print(f"Negativo: {negativo_media * 100:.2f}%")
+print(f"Misturado: {misturado_media * 100:.2f}%")
+print("="*50)
+
+print("Modelo treinado com sucesso!")
