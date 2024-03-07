@@ -1,0 +1,21 @@
+Nesta etapa crucial do projeto, implementamos um modelo de classificação de texto usando Support Vector Machine (SVM) com um kernel linear. Aqui está uma visão mais detalhada do processo:
+
+Seleção do Modelo:
+Optamos por utilizar um SVM com um kernel linear devido à sua eficácia comprovada em problemas de classificação de texto. O SVM é uma escolha popular devido à sua capacidade de lidar com grandes conjuntos de dados e separar eficientemente classes lineares.
+
+Instanciação do Modelo:
+Criamos uma instância do classificador LinearSVC usando a biblioteca scikit-learn. Esta classe implementa um SVM linear e oferece uma interface conveniente para treinar e prever a classe de novos documentos de texto.
+
+Treinamento do Modelo:
+Utilizamos o conjunto de dados de treinamento previamente preparado, composto por uma matriz de características (X_train_vec) e os rótulos correspondentes (y_train). Ao chamar o método fit(X_train_vec, y_train), o modelo é treinado para aprender os padrões nos dados e criar um hiperplano de separação ideal entre as classes.
+
+Otimização dos Parâmetros:
+Durante o treinamento, o SVM linear ajusta os parâmetros do modelo para minimizar a função de custo e maximizar a margem de separação entre as classes. Isso é feito através de técnicas de otimização, como a descida gradiente.
+
+Avaliação do Modelo:
+Após o treinamento, o modelo é avaliado usando o conjunto de dados de teste (X_test_vec) para verificar sua capacidade de generalização. A precisão do modelo é calculada comparando as previsões do modelo (y_pred) com os rótulos reais (y_test) usando métricas como a acurácia.
+
+O treinamento do modelo de classificação de texto usando SVM linear é uma etapa fundamental no processo de análise de documentos PDF. Ao final deste processo, esperamos obter um modelo preciso e robusto, capaz de classificar eficientemente documentos em diferentes categorias.
+
+
+
