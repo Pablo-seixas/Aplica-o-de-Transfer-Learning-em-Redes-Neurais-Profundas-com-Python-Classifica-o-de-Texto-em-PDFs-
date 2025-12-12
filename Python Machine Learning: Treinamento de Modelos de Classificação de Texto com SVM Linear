@@ -14,7 +14,7 @@ def extract_text_from_pdf(pdf_path):
         for page_num in range(len(reader.pages)):
             page = reader.pages[page_num]
             text += page.extract_text()
-    return text
+    return text 
 
 # Caminho para o diretório com o arquivo PDF
 pdf_dir = 'C:\\Users\\pablo_y7v\\Desktop\\AREA\\Pablo Santos Seixas - 2024.3.4.pdf'
